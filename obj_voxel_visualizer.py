@@ -168,8 +168,7 @@ def voxel_array2voxel_mesh_obj(filename, voxel_array, surface_view = True):
 	Parameters
 	----------
 		filename : string ("*.obj")
-			Name of the OBJ file to be created in local directory. Requires
-			the filename to end in ".obj" for a valid file.
+			Name of the OBJ file to be created in local directory.
 		voxel_array : ndarray
 			3D array of values that define a volume of voxels.
 		surface_view : boolean 
@@ -185,16 +184,21 @@ def voxel_array2voxel_mesh_obj(filename, voxel_array, surface_view = True):
 
 def obj_voxel_visualizer( 
 		npy_input_filename, 
-		obj_output_filename=OBJ_Output_Filename , 
-		surface_view=Surface_View):
+		obj_output_filename = OBJ_Output_Filename , 
+		surface_view = Surface_View):
 
 	voxel_array = np.load( npy_input_filename )
+	
+	# Manual Surface View Filtering Handled Here
 	if surface_view: voxel_array = get_surface_voxels( voxel_array )
 
 	if voxel_limit_check( voxel_array ):
-		print( "Total Number of Voxels:", np.count_nonzero( voxel_array ) )
-		print( "Surface_View:", surface_view )
-		print( "Output Filename:", obj_output_filename )
+		print( "Number of Mesh Voxels Created:", np.count_nonzero( voxel_array ) )
+		print( "Surface View Enabled:", surface_view )
+		print( "Exported OBJ Filename:", obj_output_filename )
+
+		# Surface view not required in this function call, completed above
+		voxel_array2voxel_mesh_obj( obj_output_filename, voxel_array, surface_view=False )
 
 
 # ==================================================
