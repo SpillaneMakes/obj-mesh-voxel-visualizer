@@ -1,3 +1,11 @@
+# Large Example Files Excluded
+# 252.53 MB
+npy_voxel_arrays_nittany_lion/nittany-lion-0.1-voxel-array.npy
+# 1.12 GB
+obj_voxel_meshes_nittany_lion/nittany-lion-0.1-voxel-mesh.obj
+# 171.68 MB
+obj_voxel_meshes_nittany_lion/nittany-lion-0.25-voxel-mesh.obj
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
