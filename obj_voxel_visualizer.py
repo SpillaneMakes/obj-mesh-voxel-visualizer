@@ -183,7 +183,11 @@ def voxel_array2voxel_mesh_obj(filename, voxel_array, surface_view = True):
 # Main Script
 # ==================================================
 
-def obj_voxel_visualizer( npy_input_filename, obj_output_filename, surface_view ):
+def obj_voxel_visualizer( 
+		npy_input_filename, 
+		obj_output_filename=OBJ_Output_Filename , 
+		surface_view=Surface_View):
+
 	voxel_array = np.load( npy_input_filename )
 	if surface_view: voxel_array = get_surface_voxels( voxel_array )
 
@@ -196,6 +200,34 @@ def obj_voxel_visualizer( npy_input_filename, obj_output_filename, surface_view 
 # ==================================================
 # Input Argument Parsing
 # ==================================================
+
+def query_yes_no( question, default="yes" ):
+	valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
+	if default is None:
+		prompt = ( question + " [y/n] " )
+	elif default == "yes":
+		prompt = ( question + " [Y/n] " )
+	elif default == "no":
+		prompt = ( question + " [y/N] " )
+	else:
+		raise ValueError("invalid default answer: '%s'" % default)
+	
+	while True:
+		sys.stdout.write( prompt )
+		choice = input().lower()
+		if default is not None and choice == "":
+			return valid[default]
+		elif choice in valid:
+			return valid[choice]
+		else:
+			sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
+
+def voxel_limit_check( voxel_array, limit=1000000 ):
+	if np.count_nonzero(voxel_array) > limit:
+		print("Total number of voxels is over 1,000,000. Creating a mesh with this many faces can cause performance issues when opened.")
+		return query_yes_no("Do you want to continue?", default="no")
+	else:
+		return True
 
 if __name__ == '__main__':
 
@@ -215,34 +247,6 @@ if __name__ == '__main__':
 				obj_output_filename = (args.output + ".obj")
 		
 		return args.npy_input_filename, obj_output_filename, args.surface_view
-
-	def query_yes_no( question, default="yes" ):
-		valid = {"yes": True, "y": True, "ye": True, "no": False, "n": False}
-		if default is None:
-			prompt = ( question + " [y/n] " )
-		elif default == "yes":
-			prompt = ( question + " [Y/n] " )
-		elif default == "no":
-			prompt = ( question + " [y/N] " )
-		else:
-			raise ValueError("invalid default answer: '%s'" % default)
-		
-		while True:
-			sys.stdout.write( prompt )
-			choice = input().lower()
-			if default is not None and choice == "":
-				return valid[default]
-			elif choice in valid:
-				return valid[choice]
-			else:
-				sys.stdout.write("Please respond with 'yes' or 'no' " "(or 'y' or 'n').\n")
-
-	def voxel_limit_check( voxel_array, limit=1000000 ):
-		if np.count_nonzero(voxel_array) > limit:
-			print("Total number of voxels is over 1,000,000. Creating a mesh with this many faces can cause performance issues when opened.")
-			return query_yes_no("Do you want to continue?", default="no")
-		else:
-			return True
 	
 	# Main Script Call
 	args = parse_arguments()
