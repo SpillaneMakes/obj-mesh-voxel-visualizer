@@ -26,7 +26,7 @@ from numpy.lib import stride_tricks
 
 def get_shape_and_strides( voxel_array ):
 	""" Calculate the shape of a stride region and stride step distance
-		to move a 3x3 or 3x3x3 kernel window over every internal value.
+	to move a 3x3 or 3x3x3 kernel window over every internal value.
 	Parameters
 	----------
 		voxel_array : array
@@ -39,7 +39,7 @@ def get_shape_and_strides( voxel_array ):
 			the inner array, ignores 1 value border. Kernel window size
 			is 3x3 for 2D array, 3x3x3 for 3D array.
 	Examples
-    --------
+	--------
 		Calculate shape and strides of an array with:
 			shape = ( 102, 59, 44 )
 			dtype = int8
@@ -63,8 +63,8 @@ def get_shape_and_strides( voxel_array ):
 
 def get_surface_voxels( voxel_array ):
 	""" Remove all values that contain non-zero neighbors in every direction.
-		Returns an array of identical size with values that define the surface
-		of the voxel volume.
+	Returns an array of identical size with values that define the surface
+	of the voxel volume.
 	Parameters
 	----------
 		voxel_array : array
@@ -91,8 +91,8 @@ def get_surface_voxels( voxel_array ):
 
 def voxel_array2mesh( voxel_array, surface_view = True ):
 	""" Covert an array of voxels into vertices and faces that create a mesh volume.
-		Includes option to disable surface view which will generate vertices and
-		faces for all voxels found in the provided array.
+	Includes option to disable surface view which will generate vertices and
+	faces for all voxels found in the provided array.
 	Parameters
 	----------
 		voxel_array : ndarray
