@@ -1,9 +1,8 @@
-![[OBJ-Mesh-Voxel-Visualizer-Nittany-Lion-Shrine-Banner.png]]
+![OBJ Mesh Voxel Visualizer Banner](images/OBJ-Mesh-Voxel-Visualizer-Nittany-Lion-Shrine-Banner.png)
 
 *A utility to convert voxel data stored in a 3D NumPy array into a collection of OBJ mesh cubes for visualizing, sharing, and rendering.*
 
 ## Overview
----
 - Generates mesh vertices and faces corresponding to each point in a NumPy array. 
 - The script is a utility to share voxel models with peers who can access a basic mesh modeling program that can open Wavefront OBJ files. 
 - A helpful tool for generating voxel mesh models for images and renders. 
@@ -11,7 +10,6 @@
 - By default, the script filters out all internal voxels creating a surface view shell made only of voxels that border empty voxel regions.
 
 ## Usage
----
 **Dependencies**
 - NumPy is the only package dependency for the main python script.
 - Additional dependencies listed in `requirements.txt` support the analysis done in the jupyter notebook.
