@@ -52,8 +52,24 @@ python obj-voxel-visualizer.py input-numpy-file.npy --no-surface-view
 <p style="text-align:center;">Different Resolution Voxel Mesh Models</p>
 
 <p align="center">
-  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/voxel-lion-0.25-4x3.png">
-  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/voxel-lion-0.50-4x3.png">
-  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/voxel-lion-0.75-4x3.png">
-  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/voxel-lion-1.0-4x3.png">
+  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/1.voxel-lion-0.25-4x3.png"></img>
+  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/2.voxel-lion-0.50-4x3.png"></img>
+  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/3.voxel-lion-0.75-4x3.png"></img>
+  <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/4.voxel-lion-1.0-4x3.png"></img>
 </p>
+
+|     | Voxel Array Bounding Dimensions | Surface Voxel Count | Voxel % of Bounding Unit Magnitude |
+|:---:| -------------------------------:| -------------------:|:----------------------------------:|
+|  1  |                 (408, 236, 176) |             340,106 |              0.1988%               |
+|  2  |                  (204, 118, 88) |              83,142 |              0.3975%               |
+|  3  |                   (136, 79, 59) |              36,269 |              0.5953%               |
+|  4  |                   (102, 59, 44) |              19,786 |              0.7950%               |
+
+
+$$
+\left(\ x\, \ y\, \ z \ \right) = \text{voxelˍarray.shape}
+$$
+
+$$
+\text{Voxel ％ of Bounding Magnitude} = \left( \frac{1}{ \sqrt{x^2+y^2+z^2} } \right) * 100
+$$
