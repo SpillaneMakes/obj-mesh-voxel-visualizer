@@ -45,12 +45,14 @@ python obj-voxel-visualizer.py input-numpy-file.npy --no-surface-view
 
 ## Examples
 
-<p style="text-align:center;">Surface View ON vs Surface View Off</p>
+<p align="center">Surface View ON vs Surface View OFF</p>
 
-![Surface View Enabled vs Disabled](images/SurfView_vs_NoSurfView.JPG)
+<p align="center">
+  <img style="width: 90%; min-width: 300px;" src="images/SurfView_vs_NoSurfView.JPG">
+</p>
 
-<p style="text-align:center;">Different Resolution Voxel Mesh Models</p>
-
+<p align="center">Different Resolution Voxel Mesh Models</p>
+  
 <p align="center">
   <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/1.voxel-lion-0.25-4x3.png"></img>
   <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/2.voxel-lion-0.50-4x3.png"></img>
