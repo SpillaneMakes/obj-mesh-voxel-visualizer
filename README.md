@@ -14,7 +14,7 @@
 ## Usage
 **Dependencies**
 - NumPy is the only package dependency for the main python script.
-- Additional dependencies listed in `requirements.txt` support the analysis done in the jupyter notebook.
+- Additional dependencies listed in `requirements.txt` support the analysis completed in the jupyter notebook.
 
 **Example Script Commands**
 
@@ -45,13 +45,18 @@ python obj-voxel-visualizer.py input-numpy-file.npy --no-surface-view
 
 ## Examples
 
-<p align="center">Surface View ON vs Surface View OFF</p>
+<p align="center" style='font-weight: bold'>
+  Voxel Model Cross-Section <br>
+  Surface View ON vs Surface View OFF
+</p>
 
 <p align="center">
   <img style="width: 90%; min-width: 300px;" src="images/SurfView_vs_NoSurfView.JPG">
 </p>
 
-<p align="center">Different Resolution Voxel Mesh Models</p>
+<p align="center" style='font-weight: bold'>
+  Mesh Voxel Models with Varied Voxel Resolution
+</p>
   
 <p align="center">
   <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/1.voxel-lion-0.25-4x3.png"></img>
@@ -60,18 +65,26 @@ python obj-voxel-visualizer.py input-numpy-file.npy --no-surface-view
   <img style="width: 45%; min-width: 300px;" src="images/voxel-scale-comparison/4.voxel-lion-1.0-4x3.png"></img>
 </p>
 
-|     | Voxel Array Bounding Dimensions | Surface Voxel Count | Voxel % of Bounding Unit Magnitude |
-|:---:| -------------------------------:| -------------------:|:----------------------------------:|
-|  1  |                 (408, 236, 176) |             340,106 |              0.1988%               |
-|  2  |                  (204, 118, 88) |              83,142 |              0.3975%               |
-|  3  |                   (136, 79, 59) |              36,269 |              0.5953%               |
-|  4  |                   (102, 59, 44) |              19,786 |              0.7950%               |
+|     | Surface Voxel Count | Voxel Array Bounding Box Dimensions | Voxel % of Bounding Box Magnitude |
+|:---:| -------------------:| -----------------------------------:|:---------------------------------:|
+|  1  |             340,106 |                   ( 408, 236, 176 ) |              0.1988%              |
+|  2  |              83,142 |                    ( 204, 118, 88 ) |              0.3975%              |
+|  3  |              36,269 |                     ( 136, 79, 59 ) |              0.5953%              |
+|  4  |              19,786 |                     ( 102, 59, 44 ) |              0.7950%              |
+
+<br>
 
 
+## Calculating Voxel Resolution
+- Voxel resolution is measured as a percentage of the voxel grid dimension magnitude.
+- Assuming there is no padding around the model's minimum bounding box, the resolution indicates the voxel size and the model orientation within the voxel grid.
+- A larger voxel size will decrease the detail on the model surface and reduce the size of the file containing the voxel data.
+- Decreasing the voxel resolution percentage increases the number of voxels inside the voxel grid array.
+
 $$
-\left(\ x\, \ y\, \ z \ \right) = \text{voxelˍarray.shape}
+\left(\ x\, \ y\, \ z \ \right) = \text{ndarray.shape}
 $$
 
 $$
-\text{Voxel ％ of Bounding Magnitude} = \left( \frac{1}{ \sqrt{x^2+y^2+z^2} } \right) * 100
+\text{Voxel ％ of Bounding Box Magnitude} = \left( \frac{1 \text{ voxel}}{ \sqrt{x^2+y^2+z^2} } \right) * 100
 $$
